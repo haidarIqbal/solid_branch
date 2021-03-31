@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center mt-5 mb-4">
+  <div class="col-5">
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">
+          With supporting text below as a natural lead-in to additional content.
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <div class="card-footer text-muted">
+        You have {{ transactions.length }}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div
+    *ngFor="let transactionType of transactionTypes; let i = index"
+    [ngClass]="
+      i % 2 === 0
+        ? 'col-4 d-flex justify-content-end offset-md-1 mb-3'
+        : 'col-5 d-flex justify-content-start '
+    "
+  >
+    <div class="col-10 justify-content-start">
+      <div class="card col" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ getLength(transactionType) }}
+          </h5>
+          <p class="card-text">
+            {{ transactionType }}
+          </p>
+          <div class="d-flex justify-content-end">
+            <a
+              routerLink="/navigator"
+              [queryParams]="{ tab: i }"
+              class="btn btn-primary"
+              >See All</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
